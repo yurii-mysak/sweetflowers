@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = "~> 2.0"
+    }
+  }
+}
+
 provider "digitalocean" {
   token = var.do_token
 }
@@ -11,7 +20,7 @@ resource "digitalocean_tag" "ROLE_web" {
 }
 
 module "web" {
-  source = "../"
+  source = "../../"
 
   droplet_count = 1
 
