@@ -11,7 +11,7 @@ resource "digitalocean_tag" "ROLE_web" {
 }
 
 module "web" {
-  source = "../digitalocean/"
+  source = "."
 
   droplet_count = 1
 
