@@ -15,7 +15,7 @@ provider "digitalocean" {
 
 resource "digitalocean_droplet" "web" {
   # Obtain your ssh_key id number via your account. See Document https://developers.digitalocean.com/documentation/v2/#list-all-keys
-  ssh_keys           = [digitalocean_ssh_key.example.fingerprint]
+  ssh_keys           = ["2d:18:f9:90:4a:2d:79:ce:a6:78:e0:44:02:a3:cf:4e"]
   image              = var.ubuntu
   region             = var.do_sgp1
   size               = "s-1vcpu-1gb"
