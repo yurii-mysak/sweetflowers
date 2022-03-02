@@ -13,26 +13,22 @@ provider "digitalocean" {
   token = var.do_token
 }
 
-resource "digitalocean_tag" "ENV_example" {
-  name = "ENV:example"
-}
-
-resource "digitalocean_tag" "ROLE_web" {
-  name = "ROLE:web"
-}
-
-module "web" {
-  source = "../../"
-
-  droplet_count = 1
-
-  droplet_name       = "example-web"
-  droplet_size       = "nano"
-  monitoring         = true
-  private_networking = true
+resource "digitalocean_droplet" "web" {
+  # Obtain your ssh_key id number via your account. See Document https://developers.digitalocean.com/documentation/v2/#list-all-keys
+#  ssh_keys           = [digitalocean_ssh_key.example.fingerprint]
+  image              = var.ubuntu
+  region             = var.do_sgp1
+  size               = "s-1vcpu-1gb"
+  backups            = false
   ipv6               = false
-  floating_ip        = false
-  block_storage_size = 5
-  tags               = [digitalocean_tag.ENV_example.id, digitalocean_tag.ROLE_web.id]
+  name               = "web-sgp1"
   user_data          = file("user-data.web")
+
+#  connection {
+#      host     = self.ipv4_address
+#      type     = "ssh"
+#      private_key = file("~/.ssh/id_rsa")
+#      user     = "root"
+#      timeout  = "2m"
+#    }
 }
