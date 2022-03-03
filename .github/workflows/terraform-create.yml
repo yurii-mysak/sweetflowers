@@ -55,22 +55,22 @@ jobs:
         - name: Terraform Plan
           working-directory: ./digitalocean/modules
           run: >
-          terraform plan -var "do_token=${{ env.do_token }}"
-          -var "ssh_key=${{ env.ssh_key }}" 
-          -var "fingerprint=${{ env.fingerprint }}" 
-          -var "region=${{ github.event.inputs.region }}" 
-          -var "size=${{ github.event.inputs.instance_size }}" 
-          -var "droplet_count=${{ github.event.inputs.instance_count }}"
+            terraform plan -var "do_token=${{ env.do_token }}"
+            -var "ssh_key=${{ env.ssh_key }}" 
+            -var "fingerprint=${{ env.fingerprint }}" 
+            -var "region=${{ github.event.inputs.region }}" 
+            -var "size=${{ github.event.inputs.instance_size }}" 
+            -var "droplet_count=${{ github.event.inputs.instance_count }}"
 
           # On push to main, build or change infrastructure according to Terraform configuration files
           # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
         - name: Terraform Apply
           working-directory: ./digitalocean/modules
           run: >
-          terraform apply -auto-approve 
-          -var "do_token=${{ env.do_token }}" 
-          -var "ssh_key=${{ env.ssh_key }}" 
-          -var "fingerprint=${{ env.fingerprint }}" 
-          -var "region=${{ github.event.inputs.region }}" 
-          -var "size=${{ github.event.inputs.instance_size }}" 
-          -var "droplet_count=${{ github.event.inputs.instance_count }}"
+            terraform apply -auto-approve 
+            -var "do_token=${{ env.do_token }}" 
+            -var "ssh_key=${{ env.ssh_key }}" 
+            -var "fingerprint=${{ env.fingerprint }}" 
+            -var "region=${{ github.event.inputs.region }}" 
+            -var "size=${{ github.event.inputs.instance_size }}" 
+            -var "droplet_count=${{ github.event.inputs.instance_count }}"
