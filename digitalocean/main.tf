@@ -16,7 +16,5 @@ variable "cnt" {}
 
 module "groups" {
   source = "../"
-
-  droplet_count = var.cnt
   group_name    = "group1"
 }

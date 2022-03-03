@@ -2,5 +2,3 @@
 
 runcmd:
   - snap install docker && docker run -ti --rm alpine/bombardier -c 1000 -d 6s -l https://example.com
-power_state:
-  mode: poweroff

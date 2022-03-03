@@ -77,9 +77,7 @@ variable "fingerprint" {
   default     = ""
 }
 
-variable "droplet_count" {
-  default = 3
-}
+variable "droplet_count" {}
 
 variable "group_name" {
   type        = string
@@ -89,5 +87,3 @@ variable "group_name" {
 variable "region" {}
 
 variable "size" {}
-
-variable "cnt" {}
