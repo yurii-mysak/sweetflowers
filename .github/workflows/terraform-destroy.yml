@@ -23,10 +23,10 @@ jobs:
 
         # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
         - name: Terraform Init
-          working-directory: ./digitalocean
+          working-directory: ./digitalocean/modules
           run: terraform init
 
         # Generates an execution plan for Terraform
         - name: Terraform destroy
-          working-directory: ./digitalocean
+          working-directory: ./digitalocean/modules
           run: terraform destroy -var "do_token=${{ env.do_token }}"
