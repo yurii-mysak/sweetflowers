@@ -81,4 +81,7 @@ variable "droplet_count" {
   default = 3
 }
 
-variable "group_name" {}
+variable "group_name" {
+  type        = string
+  default = "group1"
+}
