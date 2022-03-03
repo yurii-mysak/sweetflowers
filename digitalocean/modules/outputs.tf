@@ -9,3 +9,7 @@ output "IPv6" {
 output "Name" {
   value = digitalocean_droplet.web.name
 }
+
+output "ID" {
+  value = digitalocean_droplet.web.id
+}
