@@ -14,7 +14,7 @@ provider "digitalocean" {
 }
 
 module "groups" {
-  source = ""
+  source = "../"
 
   droplet_count = 3
   group_name    = "group1"
