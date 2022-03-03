@@ -6,6 +6,10 @@ jobs:
     droplet:
       name: 'Destroy Droplet'
       runs-on: ubuntu-latest
+      env:
+        do_token: ${{ secrets.DO_TOKEN }}
+        ssh_key: ${{ secrets.SSH_KEY }}
+        fingerprint: ${{ secrets.FINGERPRINT }}
       defaults:
         run:
           shell: bash
@@ -29,4 +33,4 @@ jobs:
         # Generates an execution plan for Terraform
         - name: Terraform destroy
           working-directory: ./digitalocean/modules
-          run: terraform destroy -var "do_token=${{ env.do_token }}"
+          run: terraform destroy -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}" -var "fingerprint=${{ env.fingerprint }}"
