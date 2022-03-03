@@ -85,3 +85,7 @@ variable "group_name" {
   type        = string
   default = "group1"
 }
+
+variable "region" {}
+
+variable "size" {}

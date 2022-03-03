@@ -12,10 +12,11 @@
 #provider "digitalocean" {
 #  token = var.do_token
 #}
+variable "cnt" {}
 
 module "groups" {
   source = "../"
 
-  droplet_count = 3
+  droplet_count = var.cnt
   group_name    = "group1"
 }
