@@ -9,6 +9,7 @@ jobs:
       env:
         do_token: ${{ secrets.DO_TOKEN }}
         ssh_key: ${{ secrets.SSH_KEY }}
+        fingerprint: $ {{ secrets.fingerprint }}
       defaults:
         run:
           shell: bash
@@ -40,10 +41,10 @@ jobs:
         # Generates an execution plan for Terraform
         - name: Terraform Plan
           working-directory: ./digitalocean/modules
-          run: terraform plan -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}"
+          run: terraform plan -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}" -var "fingerprint=${{ env.fingerprint }}"
 
           # On push to main, build or change infrastructure according to Terraform configuration files
           # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
         - name: Terraform Apply
           working-directory: ./digitalocean/modules
-          run: terraform apply -auto-approve -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}"
+          run: terraform apply -auto-approve -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}" -var "fingerprint=${{ env.fingerprint }}"

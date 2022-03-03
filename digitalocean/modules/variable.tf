@@ -70,3 +70,9 @@ variable "ssh_key" {
   description = "The file path to an ssh public key"
   default     = "id_rsa.pub"
 }
+
+variable "fingerprint" {
+  type        = string
+  description = "fingerprint of ssh"
+  default     = ""
+}
