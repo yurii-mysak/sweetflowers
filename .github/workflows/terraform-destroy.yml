@@ -30,10 +30,10 @@ jobs:
           working-directory: ./digitalocean/modules
           run: terraform init
 
-#        # Generates an execution plan for Terraform
-#        - name: Terraform Plan
-#          working-directory: ./digitalocean/modules
-#          run: terraform plan -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}" -var "fingerprint=${{ env.fingerprint }}"
+        # Generates an execution plan for Terraform
+        - name: Terraform Plan
+          working-directory: ./digitalocean/modules
+          run: terraform plan -destoy -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}" -var "fingerprint=${{ env.fingerprint }}"
 
         # Generates an execution plan for Terraform
         - name: Terraform Apply
