@@ -18,6 +18,6 @@ input parameters:
 - region (default sgp1)
 - size (default s-1vcpu-1gb)
 - count (default 3)
-2. destroy all (currenlty not working)
+2. destroy all (parameters are not affecting actual destroy protocol, all resource will be destroyed)
 
 ![img.png](img.png)

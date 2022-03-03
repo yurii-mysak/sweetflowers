@@ -2,6 +2,19 @@ name : 'DigitalOcean destroy'
 
 on:
   workflow_dispatch:
+    inputs:
+      region:
+        description: 'region'
+        required: true
+        default: 'sgp1'
+      instance_count:
+        description: 'instance count'
+        required: true
+        default: '3'
+      instance_size:
+        description: 'instance size'
+        required: true
+        default: 's-1vcpu-1gb'
 jobs:
     droplet:
       name: 'Destroy Droplet'
@@ -30,12 +43,14 @@ jobs:
           working-directory: ./digitalocean/modules
           run: terraform init
 
-#        # Generates an execution plan for Terraform
-#        - name: Terraform Plan
-#          working-directory: ./digitalocean/modules
-#          run: terraform plan -destroy -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}" -var "fingerprint=${{ env.fingerprint }}"
-
         # Generates an execution plan for Terraform
         - name: Terraform Apply
           working-directory: ./digitalocean/modules
-          run: terraform destroy -auto-approve -var "region=${{ github.event.inputs.region }}" -var "size=${{ github.event.inputs.instance_size }}" -var "droplet_count=${{ github.event.inputs.instance_count }}"
+          run: >
+          terraform destroy -auto-approve 
+          -var "region=${{ github.event.inputs.region }}" 
+          -var "size=${{ github.event.inputs.instance_size }}" 
+          -var "droplet_count=${{ github.event.inputs.instance_count }}"
+          -var "region=${{ github.event.inputs.region }}"
+          -var "size=${{ github.event.inputs.instance_size }}"
+          -var "droplet_count=${{ github.event.inputs.instance_count }}"
