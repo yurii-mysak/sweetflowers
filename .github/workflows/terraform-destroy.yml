@@ -44,7 +44,18 @@ jobs:
           run: terraform init
 
         # Generates an execution plan for Terraform
-        - name: Terraform Apply
+        - name: Terraform Plan
+          working-directory: ./digitalocean/modules
+          run: >
+            terraform plan -destroy -var "do_token=${{ env.do_token }}"
+            -var "ssh_key=${{ env.ssh_key }}" 
+            -var "fingerprint=${{ env.fingerprint }}" 
+            -var "region=${{ github.event.inputs.region }}" 
+            -var "size=${{ github.event.inputs.instance_size }}" 
+            -var "droplet_count=${{ github.event.inputs.instance_count }}"
+
+        # Generates an execution plan for Terraform
+        - name: Terraform Destroy
           working-directory: ./digitalocean/modules
           run: >
             terraform destroy -auto-approve 
