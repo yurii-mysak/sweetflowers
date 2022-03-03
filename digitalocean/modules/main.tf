@@ -22,8 +22,9 @@ resource "digitalocean_droplet" "web" {
   backups            = false
   ipv6               = false
   monitoring         = true
-  name               = "web-sgp1"
+  name               = "${var.group_name}-${count.index}"
   user_data          = file("user-data.web")
+  count              = var.droplet_count
 
   connection {
       host     = self.ipv4_address

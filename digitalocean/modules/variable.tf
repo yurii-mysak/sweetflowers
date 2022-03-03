@@ -76,3 +76,7 @@ variable "fingerprint" {
   description = "fingerprint of ssh"
   default     = ""
 }
+
+variable "droplet_count" {}
+
+variable "group_name" {}
