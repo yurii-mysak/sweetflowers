@@ -68,5 +68,5 @@ variable "centos" {
 variable "ssh_key" {
   type        = string
   description = "The file path to an ssh public key"
-  default     = "~/.ssh/id_rsa.pub"
+  default     = "id_rsa.pub"
 }
