@@ -89,3 +89,5 @@ variable "group_name" {
 variable "region" {}
 
 variable "size" {}
+
+variable "cnt" {}
