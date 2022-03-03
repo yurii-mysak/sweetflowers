@@ -13,28 +13,9 @@ provider "digitalocean" {
   token = var.do_token
 }
 
-resource "digitalocean_droplet" "web" {
-  # Obtain your ssh_key id number via your account. See Document https://developers.digitalocean.com/documentation/v2/#list-all-keys
-  ssh_keys           = ["2d:18:f9:90:4a:2d:79:ce:a6:78:e0:44:02:a3:cf:4e"]
-  image              = var.ubuntu
-  region             = var.do_sgp1
-  size               = "s-1vcpu-1gb"
-  backups            = false
-  ipv6               = false
-  monitoring         = true
-  name               = "web-sgp1"
-  user_data          = file("user-data.web")
+module "groups" {
+  source = ""
 
-  connection {
-      host     = self.ipv4_address
-      type     = "ssh"
-      private_key = var.ssh_key
-      user     = "root"
-      timeout  = "2m"
-    }
-}
-
-resource "digitalocean_ssh_key" "example" {
-  name       = "my"
-  public_key = var.ssh_key
+  droplet_count = 3
+  group_name    = "group1"
 }

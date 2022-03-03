@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 jobs:
     droplet:
-      name: 'Droplet'
+      name: 'Create Droplet'
       runs-on: ubuntu-latest
       env:
         do_token: ${{ secrets.DO_TOKEN }}
