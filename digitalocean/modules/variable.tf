@@ -77,6 +77,8 @@ variable "fingerprint" {
   default     = ""
 }
 
-variable "droplet_count" {}
+variable "droplet_count" {
+  default = 3
+}
 
 variable "group_name" {}
