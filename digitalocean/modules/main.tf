@@ -24,7 +24,6 @@ resource "digitalocean_droplet" "web" {
   monitoring         = true
   name               = "web-sgp1"
   user_data          = file("user-data.web")
-  count              = 2
 
   connection {
       host     = self.ipv4_address
