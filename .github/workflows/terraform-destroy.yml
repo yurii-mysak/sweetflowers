@@ -33,4 +33,4 @@ jobs:
         # Generates an execution plan for Terraform
         - name: Terraform destroy
           working-directory: ./digitalocean/modules
-          run: terraform destroy -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}" -var "fingerprint=${{ env.fingerprint }}"
+          run: terraform destroy -auto-approve -var "do_token=${{ env.do_token }}" -var "ssh_key=${{ env.ssh_key }}" -var "fingerprint=${{ env.fingerprint }}"
