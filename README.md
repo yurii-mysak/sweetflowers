@@ -5,8 +5,10 @@ SSH_KEY public ssh key, that was set in DO
 
 FINGERPRINT fingerprint of public ssh key
 
+DO_TOKEN DigitalOcean token
 
-Change user-data.web with commands to be executed at bootstrap
+
+#Change user-data.web with commands to be executed at bootstrap
 
 # GitHub Actions workflow
 1. create droplet
