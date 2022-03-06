@@ -2,3 +2,6 @@
 
 runcmd:
   - snap install docker && docker ps
+  - openssl req  -nodes -newkey rsa:4096 -x509 -days 365 -keyout ./certs/$(curl ifconfig.me).key -out ./certs/$(curl ifconfig.me).crt -subj '/CN=$(curl ifconfig.me)'
+  - docker login -u blogdog
+  - docker-compose -f ./docker-compose.server.yaml up -d
